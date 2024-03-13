@@ -1,14 +1,14 @@
 #using the latest python image
-FROM python:latest
+FROM python:3.10.4
 
 #set the working directory for the app
 WORKDIR /app
 
 #copy the app over to the container
-ADD app.py /app/
+ADD app.py .
 
 #copy the requirements file to the working directory
-ADD requirements.txt /app/
+ADD requirements.txt .
 
 #install dependencies in requirements file
 RUN pip install -r requirements.txt
