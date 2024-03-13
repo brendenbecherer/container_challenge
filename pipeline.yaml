@@ -1,0 +1,8 @@
+name: container challenge pipeline
+#name of workflow. This workflow represents basic deployments
+
+on:
+  push:
+    branches:
+       - 'main'
+       # lines 4-7 tell github actions to act when a push is made on the 'main' branch.
