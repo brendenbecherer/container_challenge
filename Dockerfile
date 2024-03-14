@@ -5,7 +5,7 @@ FROM python:3.10.4
 RUN --mount=type=secret,id=aws_access_key_id \
   cat /run/secrets/aws_access_key_id
 RUN --mount=type=secret,id=aws_secret_access_key \
-  cat /run/secrets/aws_secret_access_key_id
+  cat /run/secrets/aws_secret_access_key
 
 #set the working directory for the app
 WORKDIR /app
