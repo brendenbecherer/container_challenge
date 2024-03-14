@@ -34,7 +34,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/container_challenge:latest
           secrets: |
-            aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
         #GitHub Action to build and push Docker images with Buildx. 
 
