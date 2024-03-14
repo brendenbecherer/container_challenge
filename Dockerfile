@@ -1,6 +1,12 @@
 #using the latest python image
 FROM python:3.10.4
 
+#inject aws key and secret into container
+RUN --mount=type=secret,id=aws_access_key_id \
+  cat /run/secrets/aws_access_key_id
+RUN --mount=type=secret,id=aws_secret_access_key \
+  cat /run/secrets/aws_secret_access_key_id
+
 #set the working directory for the app
 WORKDIR /app
 
