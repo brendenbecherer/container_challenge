@@ -54,3 +54,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-2
 
+    - name: Deploy cloud formation template
+      uses: aws-actions/aws-cloudformation-github-deploy@v1
+      with:
+        name: container-challenge-test
+        template: cloudformation.yaml
+
