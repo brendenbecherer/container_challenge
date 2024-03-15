@@ -43,20 +43,16 @@ jobs:
             AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
         #GitHub Action to build and push Docker images with Buildx. 
 
-  cloudformation:
-    runs-on:  ubuntu-latest
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
 
-    steps:
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-2
-
-    - name: Deploy cloud formation template
-      uses: aws-actions/aws-cloudformation-github-deploy@v1
-      with:
-        name: container-challenge-test
-        template: cloudformation.yaml
+      - name: Deploy cloud formation template
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: container-challenge-test
+          template: cloudformation.yaml
 
