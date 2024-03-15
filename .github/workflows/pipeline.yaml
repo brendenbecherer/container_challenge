@@ -55,4 +55,5 @@ jobs:
         with:
           name: container-challenge-test
           template: cloudformation.yaml
+          no-fail-on-empty-changeset: "1"
 
