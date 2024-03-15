@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     branches:
       - 'main'
-      #allows to push workflow manually from gui.
+      #allows to push workflow manually from github.
        
 jobs:
   dockerpush:
