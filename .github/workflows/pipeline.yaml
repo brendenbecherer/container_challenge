@@ -4,13 +4,18 @@ name: build, test and push docker image
 on:
   push:
     branches:
-       - 'main'
-       # lines 4-7 tell github actions to act when a push is made on the 'main' branch.
+      - 'main'
+      #tell github actions to act when a push is made on the 'main' branch.
 
+  workflow_dispatch:
+    branches:
+      - 'main'
+      #allows to push workflow manually from gui.
+       
 jobs:
   dockerpush:
     runs-on: ubuntu-latest
-    # lines 10-12 tell github actions to run a job named dockerpush using a runner on the latest version of ubuntu.
+    #tell github actions to run a job named dockerpush using a runner on the latest version of ubuntu.
 
     steps: #lists steps for github actions to complete
       - name: checkout code
