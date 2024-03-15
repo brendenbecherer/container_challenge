@@ -1,9 +1,11 @@
-Type: AWS::EC2::Instance
-Properties:
-  ImageId: ami-0d7a109bf30624c99
-  InstanceType: t2.micro
-  KeyName: challenge
-  PropagateTagsToVolumeOnCreation: "true"
-  Tags: 
-  - Key: name
-    Value: python_01
+Resources:
+    mylaunch:
+      Type: AWS::EC2::Instance
+      Properties:
+        ImageId: ami-07bff6261f14c3a45
+        InstanceType: t2.micro
+        KeyName: challenge
+        PropagateTagsToVolumeOnCreation: "true"
+        Tags: 
+        - Key: Name
+          Value: python_01

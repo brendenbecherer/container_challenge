@@ -1,5 +1,5 @@
-name: build, test and push docker image
-#name of workflow. This workflow will build, test, and push a docker image to docker hub.
+name: build and push docker image
+#name of workflow. This workflow will build and push a docker image to docker hub.
 
 on:
   push:
