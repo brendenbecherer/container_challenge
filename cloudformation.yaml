@@ -12,10 +12,17 @@ Resources:
         UserData:
           Fn::Base64: !Sub |
             #!/bin/bash
+            mkdir /home/ec2-user/app
+            chown -R ec2-user:ec2-user /home/ec2-user/app
             dnf update -y
             dnf install docker -y
             systemctl start docker
             systemctl enable docker
+            echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCTEXcx9vUYsfjXjX8fsp1+yXbRyXl49N/0f/XMfLpDmycJDYGaXJrtad4eFC8fejvGIdIuKNsvBrmBCTWl6Th1WTTOLcu8B+GtZFTjVodlOPgz1G6UMn65Ze3ls42BRtuSj+jAaMpREWkM46mG76SPVj8ylXFZnoa9JO6b0tbI8KrdQyuAQ1G9HsddoUQrg/n1kbnORDfyrLw1VCxdNMT/Q7qfSUhgK0Julg5L1BJVkjxlDbAS/1B0kkt8HMMtrTDQn3P50yUd2pTxC1FdX2NLiXAtgCKg+mBUxVj0VH/CAHrqnKVdR8LADC495oeEuHAlLl5NrSxay26fiUyYn1//oGAC1Fx3HQff7q6nGu36y3goZA61/NYM+dYo49Eug+p0V9IuDtqsd2rbc64/GEyg99GiR19aEmJo0DJXKPPoeblyKZv858+wXxAW05mUM39ZRqIotogAjPW6McVpn6w+JpWbl8JljG4ZnrTZJnukbdF+K2sHpWwAP5xybGZUABuG4LuGG//zykjhRHGgwasiHb5N8Ql7f9Uunio43ZNsA6bqxanuw+b8mK1aDdevENHr7vWkdTGxL/yE7q+wo2hIJ21OAplAE4bAxTkmWyixlukbIURbHYSO8svC5SZIlRmGpog9E0JvI0mAyDRZR/ueHMP5ua9UP/hf7m6HIXKPfw== github-actions-deploy" >> /home/ec2-user/.ssh/authorized_keys
+            chmod 700 /home/ec2-user/.ssh
+            chmod 600 /home/ec2-user/.ssh/authorized_keys
+            chown -R ec2-user:ec2-user /home/ec2-user/.ssh
+
 Outputs:
   InstancePublicDNS:
     Description: "The Public DNS Name of the instance"
