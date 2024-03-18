@@ -9,3 +9,10 @@ Resources:
         Tags: 
         - Key: Name
           Value: python_01
+        Userdata:
+          Fn::Base64:!Sub |
+            #!/bin/bash
+            dnf update -y
+            dnf install docker -y
+            systemctl start docker
+            systemctl enable docker
