@@ -7,12 +7,18 @@ Resources:
         KeyName: challenge
         PropagateTagsToVolumeOnCreation: "true"
         Tags: 
-        - Key: Name
-          Value: python_01
-        Userdata:
-          Fn::Base64:!Sub |
+          - Key: Name
+            Value: python_01
+        UserData:
+          Fn::Base64: !Sub |
             #!/bin/bash
             dnf update -y
             dnf install docker -y
             systemctl start docker
             systemctl enable docker
+Outputs:
+  InstancePublicDNS:
+    Description: "The Public DNS Name of the instance"
+    Value: !GetAtt mylaunch.PublicDnsName
+    Export:
+      Name: InstancePublicDNSName
