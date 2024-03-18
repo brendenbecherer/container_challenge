@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 #variables
 STACK_NAME="container-challenge"
 
@@ -17,5 +19,5 @@ echo "Instance Public DNS: $INSTANCE_PUBLIC_DNS"
 
 #update github variable
 echo "Updating github secret EC2_HOSTNAME."
-gh secret EC2_HOSTNAME set -b "$INSTANCE_PUBLIC_DNS"
+gh secret set EC2_HOSTNAME -b "$INSTANCE_PUBLIC_DNS" -r brendenbecherer/container_challenge
 echo "Github secret EC2_HOSTNAME updated."
