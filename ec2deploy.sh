@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 #variables
 STACK_NAME="container-challenge"
 
@@ -16,3 +14,8 @@ echo "Stack creation complete."
 #get the public dns
 INSTANCE_PUBLIC_DNS=$(aws cloudformation describe-stacks --stack-name $STACK_NAME --query "Stacks[0].Outputs[?OutputKey=='InstancePublicDNS'].OutputValue" --output text)
 echo "Instance Public DNS: $INSTANCE_PUBLIC_DNS"
+
+#update github variable
+echo "Updating github secret EC2_HOSTNAME."
+gh secret EC2_HOSTNAME set -b "$INSTANCE_PUBLIC_DNS"
+echo "Github secret EC2_HOSTNAME updated."
